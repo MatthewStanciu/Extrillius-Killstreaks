@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de4fb5b1-d590-4bd0-8467-55483db827b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Killstreaks.java" afterPath="$PROJECT_DIR$/src/Killstreaks.java" />
     </list>
@@ -30,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/src/Killstreaks.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+              <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -387,6 +386,14 @@
       <option name="presentableId" value="Default" />
       <updated>1461722892345</updated>
     </task>
+    <task id="LOCAL-00001" summary="ChatColor + variable name doesn't work. Trying to figure out">
+      <created>1461725001287</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1461725001287</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -420,6 +427,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ChatColor + variable name doesn't work. Trying to figure out" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChatColor + variable name doesn't work. Trying to figure out" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -455,7 +466,7 @@
     <entry file="file://$PROJECT_DIR$/src/Killstreaks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

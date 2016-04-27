@@ -19,6 +19,6 @@ public class Killstreaks extends JavaPlugin implements Listener {
         String killed = event.getEntity().getDisplayName();
         String killer = event.getEntity().getKiller().getDisplayName();
 
-        //event.getDeathMessage(ChatColor.AQUA + killed + ChatColor.GRAY + "was killed by " + ChatColor.AQUA + killer);
+        event.setDeathMessage(ChatColor.AQUA + killed + ChatColor.GRAY + "was killed by " + ChatColor.AQUA + killer);
     }
 }
