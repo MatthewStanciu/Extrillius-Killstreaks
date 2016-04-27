@@ -1,7 +1,9 @@
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,5 +30,24 @@ public class Killstreaks extends JavaPlugin implements Listener {
             event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + "fell into the void");
         }
         // check if player as thrown into the void
+    }
+    @EventHandler
+    public void onHit(EntityDamageByEntityEvent event) {
+        final Player hit = (Player) event.getEntity();
+        Player hitter = (Player) event.getDamager();
+        String hitName = hit.getDisplayName();
+        String hitterName = hitter.getDisplayName();
+
+        this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+            @Override
+            public void run() {
+                /*
+                if (hit.getHealth() == 0) {
+                    I don't know how to do this
+                }
+                */
+            }
+        }, 200L);
+
     }
 }
