@@ -1,3 +1,5 @@
+package net.extrillius.killstreaks;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -33,7 +35,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
     }
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
-        final Player hit = (Player) event.getEntity();
+        Player hit = (Player) event.getEntity();
         Player hitter = (Player) event.getDamager();
         String hitName = hit.getDisplayName();
         String hitterName = hitter.getDisplayName();
