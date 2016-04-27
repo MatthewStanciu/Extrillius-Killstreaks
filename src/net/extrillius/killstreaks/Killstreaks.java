@@ -9,10 +9,14 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by TechBug2012 on 4/26/16.
  */
 public class Killstreaks extends JavaPlugin implements Listener {
+    HashMap<Integer, String> kills = new HashMap<Integer, String>();
 
     public void onEnable() {
 
@@ -25,13 +29,28 @@ public class Killstreaks extends JavaPlugin implements Listener {
         String killerName = event.getEntity().getKiller().getDisplayName();
         Player killed = event.getEntity();
         Player killer = event.getEntity().getKiller();
+        int killsNumber = 1;
 
         event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + "was killed by " + ChatColor.AQUA + killerName);
         if (killed.getLocation().getY() < 10) {
             killed.setHealthScale(0);
             event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + "fell into the void");
         }
-        // check if player as thrown into the void
+
+        if (!(kills.containsValue(killerName))) {
+            kills.put(killsNumber, killerName);
+        }
+        if (kills.containsValue(killerName)) {
+            kills.remove(killsNumber);
+            kills.remove(killerName); // stupid error here
+            killsNumber++;
+            kills.put(killsNumber, killerName);
+        }
+        if (killer.getHealth() == 0) {
+            kills.remove(killsNumber);
+            kills.remove(killerName);
+            // tell the server
+        }
     }
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {

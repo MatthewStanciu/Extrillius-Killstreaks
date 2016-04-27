@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de4fb5b1-d590-4bd0-8467-55483db827b7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/extrillius/killstreaks/plugin.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Killstreaks.java" afterPath="$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java" afterPath="$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java" />
     </list>
     <ignored path="Killstreaks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,12 +28,13 @@
       <file leaf-file-name="Killstreaks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+            <state relative-caret-position="488">
+              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1601#1843#0" expanded="true" />
-                <element signature="e#1842#1843#0" expanded="true" />
+                <element signature="e#562#579#0" expanded="true" />
+                <element signature="e#2199#2441#0" expanded="true" />
+                <element signature="e#2440#2441#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -435,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1461758159097</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added plugin.yml">
+      <created>1461773921641</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1461773921641</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -482,7 +489,8 @@
     <MESSAGE value="ChatColor + variable name doesn't work. Trying to figure out" />
     <MESSAGE value="it was just a stupid mistake lol" />
     <MESSAGE value="getting thrown into the void" />
-    <option name="LAST_COMMIT_MESSAGE" value="getting thrown into the void" />
+    <MESSAGE value="added plugin.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added plugin.yml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -495,8 +503,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1601#1843#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
+            <element signature="e#562#579#0" expanded="true" />
+            <element signature="e#2199#2441#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -507,8 +516,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1601#1843#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
+            <element signature="e#562#579#0" expanded="true" />
+            <element signature="e#2199#2441#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -539,12 +549,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+        <state relative-caret-position="488">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1601#1843#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
+            <element signature="e#562#579#0" expanded="true" />
+            <element signature="e#2199#2441#0" expanded="true" />
+            <element signature="e#2440#2441#0" expanded="true" />
           </folding>
         </state>
       </provider>
