@@ -1,3 +1,4 @@
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -18,6 +19,6 @@ public class Killstreaks extends JavaPlugin implements Listener {
         String killed = event.getEntity().getDisplayName();
         String killer = event.getEntity().getKiller().getDisplayName();
 
-
+        //event.getDeathMessage(ChatColor.AQUA + killed + ChatColor.GRAY + "was killed by " + ChatColor.AQUA + killer);
     }
 }
