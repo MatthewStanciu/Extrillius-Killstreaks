@@ -1,6 +1,7 @@
 name: ExtrilliusKillstreaks
 author: TechBug2012
 main: net.extrillius.killstreaks.Killstreaks
+version: 1.0
 description: A killstreaks plugin for Extrillius KitPvP
 
 commands:
