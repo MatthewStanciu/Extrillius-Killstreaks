@@ -21,7 +21,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
     private HashMap<Integer, String> kills = new HashMap<>();
     int killsNumber = 1;
     int id;
-    boolean timer = false;
+    boolean timer;
     Entity hit; // watch out for npe
     Entity hitter; // watch out for npe
     String hitName;
@@ -37,6 +37,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
     }
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
+        timer = true;
         if (hit instanceof Player && hitter instanceof Player) {
             hit = event.getEntity();
             hitter = event.getDamager();
@@ -50,18 +51,20 @@ public class Killstreaks extends JavaPlugin implements Listener {
         this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             @Override
             public void run() {
-                timer = true;
+                timer = false;
             }
         }, 200L);
 
     }
     @EventHandler
     public void onKill(PlayerDeathEvent event) {
-        killedName = event.getEntity().getDisplayName();
-        killerName = event.getEntity().getKiller().getDisplayName();
-        killed = event.getEntity();
-        killer = event.getEntity().getKiller();
-        if (hit.getLastDamageCause() != null) {
+        if (killed != null && killer != null) {
+            killedName = event.getEntity().getDisplayName();
+            killerName = event.getEntity().getKiller().getDisplayName();
+            killed = event.getEntity();
+            killer = event.getEntity().getKiller();
+        }
+        if (hit != null && hit.getLastDamageCause() != null) {
             if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
                 if (timer) {
                     getServer().getScheduler().cancelTask(id);
@@ -119,7 +122,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
             killsNumber++;
             kills.put(killsNumber, killerName);
         }
-        if (killer.getHealth() == 0) {
+        if (killer.isDead()) {
             kills.remove(killsNumber);
             kills.remove(killerName); // another stupid warning here
             getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.GREEN + " was shutdown with "
@@ -139,7 +142,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("kills")) {
-            if (kills.containsValue(killerName) && killerName.equals(sender.getName())) {
+            if (kills.containsValue(sender.getName())) {
                 if (!(kills.get(killsNumber)).equals("1")) {
                     sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + kills.get(killsNumber)
                             + ChatColor.GRAY + " kills");
