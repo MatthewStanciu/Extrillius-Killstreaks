@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Killstreaks:jar">
+    <output-path>$PROJECT_DIR$/..</output-path>
+    <root id="archive" name="Killstreaks.jar">
+      <element id="module-output" name="Killstreaks" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/killstreaks/plugin.yml" />
+    </root>
+  </artifact>
+</component>
