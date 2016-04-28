@@ -24,8 +24,8 @@ public class Killstreaks extends JavaPlugin implements Listener {
     boolean timer = false;
     Entity hit; // watch out for npe
     Entity hitter; // watch out for npe
-    String hitName = hit.getName();
-    String hitterName = hitter.getName();
+    String hitName;
+    String hitterName;
     Player killed;
     Player killer;
     String killedName;
@@ -40,6 +40,8 @@ public class Killstreaks extends JavaPlugin implements Listener {
         if (hit instanceof Player && hitter instanceof Player) {
             hit = event.getEntity();
             hitter = event.getDamager();
+            hitName = ((Player) hit).getDisplayName();
+            hitterName = ((Player) hitter).getDisplayName();
         }
         if (id != 0) {
             getServer().getScheduler().cancelTask(id);
