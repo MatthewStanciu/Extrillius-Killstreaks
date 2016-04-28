@@ -2,3 +2,7 @@ name: ExtrilliusKillstreaks
 author: TechBug2012
 main: net.extrillius.killstreaks.Killstreaks
 description: A killstreaks plugin for Extrillius KitPvP
+
+commands:
+  kills:
+    description: Check how many kills you have
