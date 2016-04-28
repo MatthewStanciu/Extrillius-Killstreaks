@@ -61,63 +61,53 @@ public class Killstreaks extends JavaPlugin implements Listener {
         killerName = event.getEntity().getKiller().getDisplayName();
         killed = event.getEntity();
         killer = event.getEntity().getKiller();
-
-        if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
-            if (timer) {
-                getServer().getScheduler().cancelTask(id);
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
-                        + " was thrown into the void by " + ChatColor.AQUA + killerName);
+        if (hit.getLastDamageCause() != null) {
+            if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
+                if (timer) {
+                    getServer().getScheduler().cancelTask(id);
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
+                            + " was thrown into the void by " + ChatColor.AQUA + killerName);
+                } else {
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell into the void");
+                }
+            } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL) {
+                if (timer) {
+                    getServer().getScheduler().cancelTask(id);
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
+                            + " was thrown off a cliff by " + ChatColor.AQUA + killerName);
+                } else {
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell off a cliff");
+                }
+            } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.LAVA) {
+                if (timer) {
+                    getServer().getScheduler().cancelTask(id);
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
+                            + " was thrown into a pit of of lava by " + ChatColor.AQUA + killerName);
+                } else {
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " jumped into lava");
+                }
+            } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FIRE) {
+                if (timer) {
+                    getServer().getScheduler().cancelTask(id);
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
+                            + " was burned by " + ChatColor.AQUA + killerName);
+                } else {
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " burned to death");
+                }
+            } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
+                if (timer) {
+                    getServer().getScheduler().cancelTask(id);
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
+                            + " was shot by " + ChatColor.AQUA + killerName);
+                } else {
+                    event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " shot themselves");
+                }
+            } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.SUICIDE) {
+                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " killed themselves.");
+            } else {
+                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " was killed by " + ChatColor.AQUA
+                        + killerName);
             }
-            else {
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell into the void");
-            }
-        }
-        else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL) {
-            if (timer) {
-                getServer().getScheduler().cancelTask(id);
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
-                        + " was thrown off a cliff by " + ChatColor.AQUA + killerName);
-            }
-            else {
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell off a cliff");
-            }
-        }
-        else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.LAVA) {
-            if (timer) {
-                getServer().getScheduler().cancelTask(id);
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
-                        + " was thrown into a pit of of lava by " + ChatColor.AQUA + killerName);
-            }
-            else {
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " jumped into lava");
-            }
-        }
-        else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FIRE) {
-            if (timer) {
-                getServer().getScheduler().cancelTask(id);
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
-                        + " was burned by " + ChatColor.AQUA + killerName);
-            }
-            else {
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " burned to death");
-            }
-        }
-        else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
-            if (timer) {
-                getServer().getScheduler().cancelTask(id);
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
-                        + " was shot by " + ChatColor.AQUA + killerName);
-            }
-            else {
-                event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " shot themselves");
-            }
-        }
-        else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.SUICIDE) {
-            event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " killed themselves.");
-        }
-        else {
-            event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " was killed by " + ChatColor.AQUA
-                    + killerName);
         }
 
         if (!(kills.containsValue(killerName))) {
@@ -150,8 +140,14 @@ public class Killstreaks extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("kills")) {
             if (kills.containsValue(killerName) && killerName.equals(sender.getName())) {
-                sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + kills.get(killsNumber)
-                        + ChatColor.GRAY + " kills");
+                if (!(kills.get(killsNumber)).equals("1")) {
+                    sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + kills.get(killsNumber)
+                            + ChatColor.GRAY + " kills");
+                }
+                else {
+                    sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + kills.get(killsNumber)
+                            + ChatColor.GRAY + " kill");
+                }
             }
             else {
                 sender.sendMessage(ChatColor.GRAY + "You don't have any kills yet.");

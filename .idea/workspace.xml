@@ -28,8 +28,8 @@
       <file leaf-file-name="Killstreaks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
+            <state relative-caret-position="450">
+              <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1556#1680#0" expanded="true" />
@@ -469,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1461805223189</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed an npe">
+      <created>1461805362348</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1461805362348</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -522,7 +529,8 @@
     <MESSAGE value="forgot to put /kills as a command :P" />
     <MESSAGE value="removed unnecessary imports" />
     <MESSAGE value="forgot to add version in plugin.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="forgot to add version in plugin.yml" />
+    <MESSAGE value="fixed an npe" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed an npe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -601,8 +609,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
+        <state relative-caret-position="450">
+          <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1556#1680#0" expanded="true" />
