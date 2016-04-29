@@ -62,7 +62,6 @@ public class Killstreaks extends JavaPlugin implements Listener {
                 timer = false;
             }
         }, 200L);
-
     }
     @EventHandler
     public void onKill(PlayerDeathEvent event) {
@@ -85,6 +84,9 @@ public class Killstreaks extends JavaPlugin implements Listener {
                             + ChatColor.BOLD + "SHUTDOWN");
                 }
             }
+        }
+        if (timer && event.getEntity() != hit) {
+            event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell into the void");
         }
 
         if (hit != null && hit.getLastDamageCause() != null) {

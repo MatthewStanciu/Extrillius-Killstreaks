@@ -28,8 +28,8 @@
       <file leaf-file-name="Killstreaks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="22" column="100" selection-start-line="22" selection-start-column="100" selection-end-line="22" selection-end-column="100" />
+            <state relative-caret-position="210">
+              <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1832#1957#0" expanded="true" />
@@ -455,7 +455,14 @@
       <option name="project" value="LOCAL" />
       <updated>1461842869061</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="used an iterator and broke some more things">
+      <created>1461931067925</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1461931067925</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -505,7 +512,8 @@
     <MESSAGE value="added plugin.yml" />
     <MESSAGE value="hashmaps" />
     <MESSAGE value="fixed conflicts" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed conflicts" />
+    <MESSAGE value="used an iterator and broke some more things" />
+    <option name="LAST_COMMIT_MESSAGE" value="used an iterator and broke some more things" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -580,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="100" selection-start-line="22" selection-start-column="100" selection-end-line="22" selection-end-column="100" />
+        <state relative-caret-position="210">
+          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1832#1957#0" expanded="true" />
