@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Created by TechBug2012 on 4/26/16.
  */
-    // timer is broken becuase of the multiple players problem; thus, the SHUTDOWN message is broken
+    //
 
 public class Killstreaks extends JavaPlugin implements Listener {
     private HashMap<Integer, String> kills = new HashMap<>();
@@ -75,7 +75,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
             Map.Entry mentry = (Map.Entry)it.next();
             if (kills.containsValue(killedName)) {
                 it.remove();
-                if (timer) {
+                if (timer) { // what's the point of this lol
                     getServer().broadcastMessage(ChatColor.AQUA + killedName + ChatColor.RED + " has been " + ChatColor.RED
                             + ChatColor.BOLD + "SHUTDOWN " + ChatColor.RED + "by " + ChatColor.AQUA + killerName);
                 }
