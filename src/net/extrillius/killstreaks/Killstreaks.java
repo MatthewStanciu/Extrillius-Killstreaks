@@ -13,12 +13,19 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by TechBug2012 on 4/26/16.
  */
+    // timer is broken becuase of the multiple players problem; thus, the SHUTDOWN message is broken
+
 public class Killstreaks extends JavaPlugin implements Listener {
     private HashMap<Integer, String> kills = new HashMap<>();
+    Set killSet = kills.entrySet();
+    Iterator it = killSet.iterator();
     int killsNumber = 1;
     int id;
     boolean timer;
@@ -37,16 +44,17 @@ public class Killstreaks extends JavaPlugin implements Listener {
     }
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
-        timer = true;
-        if (hit instanceof Player && hitter instanceof Player) {
             hit = event.getEntity();
             hitter = event.getDamager();
             hitName = ((Player) hit).getDisplayName();
             hitterName = ((Player) hitter).getDisplayName();
-        }
+        if (!(hit instanceof Player) && !(hitter instanceof Player))
+            return;
+
         if (id != 0) {
             getServer().getScheduler().cancelTask(id);
         }
+        timer = true;
 
         this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
             @Override
@@ -58,20 +66,43 @@ public class Killstreaks extends JavaPlugin implements Listener {
     }
     @EventHandler
     public void onKill(PlayerDeathEvent event) {
-        if (killed != null && killer != null) {
-            killedName = event.getEntity().getDisplayName();
-            killerName = event.getEntity().getKiller().getDisplayName();
-            killed = event.getEntity();
-            killer = event.getEntity().getKiller();
+        killed = event.getEntity();
+        killer = event.getEntity().getKiller();
+        killedName = killed.getName();
+        killerName = killer.getName();
+
+
+        while (it.hasNext()) {
+            Map.Entry mentry = (Map.Entry)it.next();
+            if (kills.containsValue(killedName)) {
+                it.remove();
+                if (timer) {
+                    getServer().broadcastMessage(ChatColor.AQUA + killedName + ChatColor.RED + " has been " + ChatColor.RED
+                            + ChatColor.BOLD + "SHUTDOWN " + ChatColor.RED + "by " + ChatColor.AQUA + killerName);
+                }
+                else {
+                    getServer().broadcastMessage(ChatColor.AQUA + killedName + ChatColor.RED + " has been " + ChatColor.RED
+                            + ChatColor.BOLD + "SHUTDOWN");
+                }
+            }
         }
+
         if (hit != null && hit.getLastDamageCause() != null) {
             if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
                 if (timer) {
                     getServer().getScheduler().cancelTask(id);
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
                             + " was thrown into the void by " + ChatColor.AQUA + killerName);
+                    if (!(kills.containsValue(killerName))) {
+                        kills.put(killsNumber, killerName);
+                    }
+                    else {
+                        killsNumber++;
+                        kills.put(killsNumber, killerName);
+                    }
                 } else {
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell into the void");
+
                 }
             } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL) {
                 if (timer) {
@@ -113,30 +144,15 @@ public class Killstreaks extends JavaPlugin implements Listener {
             }
         }
 
-        if (!(kills.containsValue(killerName))) {
-            kills.put(killsNumber, killerName);
-        }
-        if (kills.containsValue(killerName)) {
-            kills.remove(killsNumber);
-            kills.remove(killerName); // stupid warning here
-            killsNumber++;
-            kills.put(killsNumber, killerName);
-        }
-        if (killer.isDead()) {
-            kills.remove(killsNumber);
-            kills.remove(killerName); // another stupid warning here
-            getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.GREEN + " was shutdown with "
-                    + ChatColor.RED + kills.get(killsNumber) + ChatColor.GREEN + " kills!");
-        }
         if (kills.get(killsNumber).equals("5")) {
             getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.GREEN + " is on a killstreak!");
         }
         if (kills.get(killsNumber).equals("10")) {
-            getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.RED + " is on a rampage!");
+            getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.YELLOW + " is on a rampage!");
         }
         if (kills.get(killsNumber).equals("20")) {
-            getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.YELLOW + " is " +
-                    ChatColor.UNDERLINE + ChatColor.RED + "UNSTOPPABLE!");
+            getServer().broadcastMessage(ChatColor.AQUA + killerName + ChatColor.RED + " is " +
+                    ChatColor.BOLD + ChatColor.DARK_RED + "UNSTOPPABLE!");
         }
     }
 
@@ -144,11 +160,11 @@ public class Killstreaks extends JavaPlugin implements Listener {
         if (cmd.getName().equalsIgnoreCase("kills")) {
             if (kills.containsValue(sender.getName())) {
                 if (!(kills.get(killsNumber)).equals("1")) {
-                    sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + kills.get(killsNumber)
+                    sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + ChatColor.BOLD + kills.get(killsNumber)
                             + ChatColor.GRAY + " kills");
                 }
                 else {
-                    sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + kills.get(killsNumber)
+                    sender.sendMessage(ChatColor.GRAY + "You have " + ChatColor.GREEN + ChatColor.BOLD + kills.get(killsNumber)
                             + ChatColor.GRAY + " kill");
                 }
             }
