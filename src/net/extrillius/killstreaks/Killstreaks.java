@@ -85,9 +85,6 @@ public class Killstreaks extends JavaPlugin implements Listener {
                 }
             }
         }
-        if (timer && event.getEntity() != hit) {
-            event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell into the void");
-        }
 
         if (hit != null && hit.getLastDamageCause() != null) {
             if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
