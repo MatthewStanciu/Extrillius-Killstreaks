@@ -28,8 +28,8 @@
       <file leaf-file-name="Killstreaks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+            <state relative-caret-position="165">
+              <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +75,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="336" />
-    <option name="y" value="164" />
+    <option name="x" value="273" />
+    <option name="y" value="208" />
     <option name="width" value="1266" />
     <option name="height" value="660" />
   </component>
@@ -467,11 +467,18 @@
       <option name="project" value="LOCAL" />
       <updated>1461947514732</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="nope it didn't work">
+      <created>1462031454626</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1462031454626</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="336" y="164" width="1266" height="660" extended-state="0" />
+    <frame x="273" y="208" width="1266" height="660" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -519,7 +526,8 @@
     <MESSAGE value="fixed conflicts" />
     <MESSAGE value="used an iterator and broke some more things" />
     <MESSAGE value="i think i fixed the timer" />
-    <option name="LAST_COMMIT_MESSAGE" value="i think i fixed the timer" />
+    <MESSAGE value="nope it didn't work" />
+    <option name="LAST_COMMIT_MESSAGE" value="nope it didn't work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -606,8 +614,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+        <state relative-caret-position="165">
+          <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

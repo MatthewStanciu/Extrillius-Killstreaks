@@ -1,5 +1,6 @@
 package net.extrillius.killstreaks;
 
+import io.netty.util.internal.ConcurrentSet;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,7 +29,6 @@ public class Killstreaks extends JavaPlugin implements Listener {
     Iterator it = killSet.iterator();
     int killsNumber = 1;
     int id;
-    boolean timer;
     Entity hit; // watch out for npe
     Entity hitter; // watch out for npe
     String hitName;
@@ -38,30 +38,42 @@ public class Killstreaks extends JavaPlugin implements Listener {
     String killedName;
     String killerName;
 
+    public boolean playerTimer() {
+        Entity hit;
+        Entity hitter;
+        int lifetime = 5;
+
+        lifetime--;
+        if (lifetime == 0) {
+            return true;
+        }
+        return false;
+    }
+
     public void onEnable() {
 
         getServer().getPluginManager().registerEvents(this, this);
     }
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event) {
-            hit = event.getEntity();
-            hitter = event.getDamager();
-            hitName = ((Player) hit).getDisplayName();
-            hitterName = ((Player) hitter).getDisplayName();
+        hit = event.getEntity();
+        hitter = event.getDamager();
+        hitName = ((Player) hit).getDisplayName();
+        hitterName = ((Player) hitter).getDisplayName();
+
         if (!(hit instanceof Player) && !(hitter instanceof Player))
             return;
 
         if (id != 0) {
             getServer().getScheduler().cancelTask(id);
         }
-        timer = true;
-
-        this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
+        this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+            ConcurrentSet playerTimers = new ConcurrentSet();
             @Override
             public void run() {
-                timer = false;
+
             }
-        }, 200L);
+        }, 0L, 20L);
     }
     @EventHandler
     public void onKill(PlayerDeathEvent event) {
@@ -70,12 +82,11 @@ public class Killstreaks extends JavaPlugin implements Listener {
         killedName = killed.getName();
         killerName = killer.getName();
 
-
         while (it.hasNext()) {
             Map.Entry mentry = (Map.Entry)it.next();
             if (kills.containsValue(killedName)) {
                 it.remove();
-                if (timer) { // what's the point of this lol
+                if (playerTimer()) { // what's the point of this lol
                     getServer().broadcastMessage(ChatColor.AQUA + killedName + ChatColor.RED + " has been " + ChatColor.RED
                             + ChatColor.BOLD + "SHUTDOWN " + ChatColor.RED + "by " + ChatColor.AQUA + killerName);
                 }
@@ -88,7 +99,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
 
         if (hit != null && hit.getLastDamageCause() != null) {
             if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
-                if (timer) {
+                if (playerTimer()) {
                     getServer().getScheduler().cancelTask(id);
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
                             + " was thrown into the void by " + ChatColor.AQUA + killerName);
@@ -104,7 +115,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
 
                 }
             } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL) {
-                if (timer) {
+                if (playerTimer()) {
                     getServer().getScheduler().cancelTask(id);
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
                             + " was thrown off a cliff by " + ChatColor.AQUA + killerName);
@@ -112,7 +123,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " fell off a cliff");
                 }
             } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.LAVA) {
-                if (timer) {
+                if (playerTimer()) {
                     getServer().getScheduler().cancelTask(id);
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
                             + " was thrown into a pit of of lava by " + ChatColor.AQUA + killerName);
@@ -120,7 +131,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " jumped into lava");
                 }
             } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FIRE) {
-                if (timer) {
+                if (playerTimer()) {
                     getServer().getScheduler().cancelTask(id);
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
                             + " was burned by " + ChatColor.AQUA + killerName);
@@ -128,7 +139,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY + " burned to death");
                 }
             } else if (hit.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
-                if (timer) {
+                if (playerTimer()) {
                     getServer().getScheduler().cancelTask(id);
                     event.setDeathMessage(ChatColor.AQUA + killedName + ChatColor.GRAY
                             + " was shot by " + ChatColor.AQUA + killerName);
