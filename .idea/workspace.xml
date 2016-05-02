@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="de4fb5b1-d590-4bd0-8467-55483db827b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java" afterPath="$PROJECT_DIR$/src/net/extrillius/killstreaks/Killstreaks.java" />
     </list>
     <ignored path="Killstreaks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -474,7 +473,14 @@
       <option name="project" value="LOCAL" />
       <updated>1462031454626</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Player timers">
+      <created>1462154639234</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1462154639234</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -527,7 +533,8 @@
     <MESSAGE value="used an iterator and broke some more things" />
     <MESSAGE value="i think i fixed the timer" />
     <MESSAGE value="nope it didn't work" />
-    <option name="LAST_COMMIT_MESSAGE" value="nope it didn't work" />
+    <MESSAGE value="Player timers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player timers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
