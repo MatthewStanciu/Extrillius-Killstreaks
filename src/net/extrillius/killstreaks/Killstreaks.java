@@ -37,12 +37,16 @@ public class Killstreaks extends JavaPlugin implements Listener {
     Player killer;
     String killedName;
     String killerName;
+    int lifetime = 5;
+    ConcurrentSet playerTimers = new ConcurrentSet();
 
     public boolean playerTimer() {
         Entity hit;
         Entity hitter;
-        int lifetime = 5;
 
+        return false;
+    }
+    public boolean tick() {
         lifetime--;
         if (lifetime == 0) {
             return true;
@@ -68,7 +72,7 @@ public class Killstreaks extends JavaPlugin implements Listener {
             getServer().getScheduler().cancelTask(id);
         }
         this.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-            ConcurrentSet playerTimers = new ConcurrentSet();
+            // can i use a hashmap instead of a concurrentset?
             @Override
             public void run() {
 
